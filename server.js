@@ -2,7 +2,15 @@ const server = require('express')()
 const renderer = require('vue-server-renderer').createRenderer({
     template: require('fs').readFileSync('./index.template.html', 'utf-8')
 })
+const createApp = require('./dist/bundle.js').default;
 
+function dealError(err, res) {
+    if (err.code === 404) {
+        res.status(404).end('Page not found')
+    } else {
+        res.status(500).end('Internal Server Error')
+    }
+}
 server.get('*', (req, res) => {
     const context = {
         title: 'hello',
@@ -11,17 +19,20 @@ server.get('*', (req, res) => {
           <meta ...>
         `
     }
-    const app = (require('./dist/bundle.js').default)({
+    createApp({
         url: req.url
-    });
-
-    renderer.renderToString(app, context, (err, html) => {
-        if (err) {
-            res.status(500).end('Internal Server Error')
-            return
-        }
-        res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
-        res.end(html)
+    }).then(app => {
+        renderer.renderToString(app, context, (err, html) => {
+            if (err) {
+                dealError(err, res)
+                return
+            }
+            res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' });
+            res.end(html)
+        })
+    }).catch(err => {
+        console.error('catch err', err)
+        dealError(err, res)
     })
 })
 

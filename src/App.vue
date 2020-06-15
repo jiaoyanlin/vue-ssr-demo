@@ -2,7 +2,9 @@
     <div id="app">
         <div>hello</div>
         <div>this is app</div>
-        <foo />
+        <router-link to="/bar">Bar</router-link> 
+        <router-link to="/foo">Foo</router-link> 
+        <router-view></router-view>
     </div>
 </template>
 
