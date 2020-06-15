@@ -1,0 +1,25 @@
+{
+  "name": "vue-ssr-demo",
+  "version": "1.0.0",
+  "description": "vue ssr从头搭建项目",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiaoyanlin/vue-ssr-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jiaoyanlin/vue-ssr-demo/issues"
+  },
+  "homepage": "https://github.com/jiaoyanlin/vue-ssr-demo#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "vue": "^2.6.11",
+    "vue-server-renderer": "^2.6.11"
+  }
+}
