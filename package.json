@@ -4,7 +4,8 @@
   "description": "vue ssr从头搭建项目",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "cross-env NODE_ENV=production npm run build && node server.js",
+    "build": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,24 @@
   },
   "homepage": "https://github.com/jiaoyanlin/vue-ssr-demo#readme",
   "dependencies": {
+    "cross-env": "^7.0.2",
     "express": "^4.17.1",
     "vue": "^2.6.11",
     "vue-server-renderer": "^2.6.11"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "autoprefixer": "^9.8.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.6.0",
+    "file-loader": "^6.0.0",
+    "postcss-loader": "^3.0.0",
+    "url-loader": "^4.1.0",
+    "vue-loader": "^15.9.2",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   }
 }
