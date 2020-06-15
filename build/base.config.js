@@ -1,15 +1,16 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
-module.exports = {
-    mode: 'development',
-    target: 'node',
+const isProd = process.env.NODE_ENV === 'production'
 
-    entry: './src/entry-server.js',
+module.exports = {
+    devtool: isProd ? false : '#cheap-module-source-map',
+    mode: isProd ? 'production' : 'development',
+
     output: {
-        libraryTarget: 'commonjs2',
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        path: path.resolve(__dirname, '../dist'),
+        publicPath: '/dist/',
+        filename: '[name].bundle.js'
     },
 
     resolve: {

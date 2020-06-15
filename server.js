@@ -1,8 +1,11 @@
-const server = require('express')()
+const path = require('path')
+const express = require('express')
+const server = express()
 const renderer = require('vue-server-renderer').createRenderer({
     template: require('fs').readFileSync('./index.template.html', 'utf-8')
 })
-const createApp = require('./dist/bundle.js').default;
+const createApp = require('./dist/server.bundle.js').default;
+const resolve = file => path.resolve(__dirname, file)
 
 function dealError(err, res) {
     if (err.code === 404) {
@@ -11,6 +14,7 @@ function dealError(err, res) {
         res.status(500).end('Internal Server Error')
     }
 }
+server.use('/dist', express.static(resolve('./dist')))
 server.get('*', (req, res) => {
     const context = {
         title: 'hello',

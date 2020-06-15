@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div>hello</div>
+        <div @click="onClick">hello</div>
         <div>this is app</div>
         <router-link to="/bar">Bar</router-link> 
         <router-link to="/foo">Foo</router-link> 
@@ -14,6 +14,14 @@ export default {
     name: 'app',
     components: {
         Foo,
+    },
+    methods: {
+        onClick() {
+            alert('Hello')
+        }
+    },
+    mounted() {
+        console.log('----app mounted')
     },
 }
 </script>
