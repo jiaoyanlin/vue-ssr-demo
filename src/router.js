@@ -20,7 +20,11 @@ export function createRouter() {
             },
             {
                 path: '/bar',
-                component: () => import('./components/Bar.vue')
+                component: () => import( /* webpackChunkName: "bar" */ './components/Bar.vue')
+            },
+            {
+                path: '/a',
+                component: () => import( /* webpackChunkName: "a" */ './components/A.vue')
             },
         ]
     })

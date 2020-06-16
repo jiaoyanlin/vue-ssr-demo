@@ -1,13 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <!-- 使用双花括号(double-mustache)进行 HTML 转义插值(HTML-escaped interpolation) -->
         <title>{{ title }}</title>
-
-        <!-- 使用三花括号(triple-mustache)进行 HTML 不转义插值(non-HTML-escaped interpolation) -->
-        {{{ meta }}}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta content="yes" name="apple-mobile-web-app-capable" />
     </head>
     <body>
         <!--vue-ssr-outlet-->
-        <script src="./dist/client.bundle.js"></script>
     </body>
 </html>

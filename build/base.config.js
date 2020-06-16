@@ -10,7 +10,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
-        filename: '[name].bundle.js'
+        filename: '[name].[chunkhash:8].js'
     },
 
     resolve: {
@@ -18,10 +18,12 @@ module.exports = {
     },
 
     module: {
+        noParse: /es6-promise\.js$/, // avoid webpack shimming process
         rules: [
             {
                 test: /\.js$/,
-                use: 'babel-loader'
+                use: 'babel-loader',
+                exclude: /node_modules/,
             },
             {
                 test: /\.css$/,
@@ -32,7 +34,8 @@ module.exports = {
                 use: {
                     loader: 'url-loader',
                     options: {
-                        limit: 10000    // 10Kb
+                        limit: 10000, // 10Kb
+                        name: 'imgs/[name].[ext]?[hash]'
                     }
                 }
             },
