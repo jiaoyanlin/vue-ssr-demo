@@ -9,11 +9,9 @@
 </template>
 
 <script>
-import Foo from './components/Foo'
 export default {
     name: 'app',
     components: {
-        Foo,
     },
     methods: {
         onClick() {

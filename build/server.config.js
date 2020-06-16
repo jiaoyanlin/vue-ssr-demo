@@ -11,7 +11,7 @@ const config = merge(base, {
         libraryTarget: 'commonjs2',
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
-        filename: '[name].bundle.js'
+        filename: 'server.bundle.js'
     },
 })
 module.exports = config

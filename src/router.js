@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Foo from './components/Foo'
-import Bar from './components/Bar'
+// import Bar from './components/Bar'
+
 
 Vue.use(Router)
 
@@ -19,7 +20,7 @@ export function createRouter() {
             },
             {
                 path: '/bar',
-                component: Bar
+                component: () => import('./components/Bar.vue')
             },
         ]
     })
