@@ -4,7 +4,7 @@ const base = require('./base.config')
 const nodeExternals = require('webpack-node-externals')
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 
-const config = merge(base, {
+const config = merge(base('server'), {
     // 这允许 webpack 以 Node 适用方式(Node-appropriate fashion)处理动态导入(dynamic import)，
     // 并且还会在编译 Vue 组件时，
     // 告知 `vue-loader` 输送面向服务器代码(server-oriented code)。

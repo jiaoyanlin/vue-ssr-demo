@@ -1,14 +1,18 @@
 const webpack = require('webpack')
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin') // css压缩与优化
+const TerserPlugin = require('terser-webpack-plugin')
 const merge = require('webpack-merge')
 const base = require('./base.config')
 
-const config = merge(base, {
+const isProd = process.env.NODE_ENV === 'production'
+
+const config = merge(base('client'), {
     entry: {
         // ./指向node命令执行时的目录，也就是项目根目录
         client: './src/entry-client.js'
     },
-    optimization: {
+    optimization: isProd ? {
         splitChunks: {
             chunks: 'all',
             cacheGroups: {
@@ -41,7 +45,13 @@ const config = merge(base, {
         * 相当于在plugins中使用new webpack.HashedModuleIdsPlugin()
         */
         moduleIds: 'hashed',
-    },
+        minimizer: [
+            new TerserPlugin({
+                extractComments: false,
+            }),
+            new OptimizeCSSAssetsPlugin(), // 压缩css，导致webpack4自带的js压缩无效，需添加js压缩（TerserPlugin）
+        ],
+    } : {},
     plugins: [
         // strip dev-only code in Vue source
         new webpack.DefinePlugin({

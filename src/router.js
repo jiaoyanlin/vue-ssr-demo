@@ -26,6 +26,10 @@ export function createRouter() {
                 path: '/a',
                 component: () => import( /* webpackChunkName: "a" */ './components/A.vue')
             },
+            {
+                path: '/banner',
+                component: () => import( /* webpackChunkName: "a" */ './components/Banner.vue')
+            },
         ]
     })
 }

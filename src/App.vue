@@ -4,6 +4,8 @@
         <div>this is app</div>
         <router-link to="/bar">Bar</router-link> 
         <router-link to="/foo">Foo</router-link> 
+        <router-link to="/a">a</router-link> 
+        <router-link to="/banner">banner</router-link> 
         <router-view></router-view>
     </div>
 </template>
@@ -11,8 +13,6 @@
 <script>
 export default {
     name: 'app',
-    components: {
-    },
     methods: {
         onClick() {
             alert('Hello')
