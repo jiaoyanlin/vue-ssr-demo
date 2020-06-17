@@ -30,6 +30,10 @@ export function createRouter() {
                 path: '/banner',
                 component: () => import( /* webpackChunkName: "a" */ './components/Banner.vue')
             },
+            {
+                path: '/item/:id',
+                component: () => import( /* webpackChunkName: "a" */ './components/Item.vue')
+            },
         ]
     })
 }
