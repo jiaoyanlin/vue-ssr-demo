@@ -10,8 +10,13 @@
 // https://vuex.vuejs.org/zh/guide/modules.html#%E6%A8%A1%E5%9D%97%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C
 // 在这里导入模块，而不是在 `store/index.js` 中
 import fooStoreModule from '../store/modules/foo'
+import titleMixin from '@mixins/title'
 export default {
     name: 'foo',
+    mixins: [titleMixin],
+    title() {
+        return 'foo title'
+    },
     data() {
         return {
             time: new Date(),

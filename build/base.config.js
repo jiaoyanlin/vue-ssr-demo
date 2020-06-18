@@ -16,7 +16,10 @@ let config = {
     },
 
     resolve: {
-        extensions: ['.js', '.vue']
+        extensions: ['.js', '.vue'],
+        alias: {
+            '@mixins': path.resolve(__dirname, '../src/mixins'),
+        }
     },
 
     module: {

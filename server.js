@@ -17,13 +17,14 @@ const template = require('fs').readFileSync('./index.template.html', 'utf-8')
 const serverBundle = require('./dist/vue-ssr-server-bundle.json')
 const clientManifest = require('./dist/vue-ssr-client-manifest.json')
 const renderer = createBundleRenderer(serverBundle, {
-    template,
-    clientManifest,
+    runInNewContext: false, // 推荐
+    template, // （可选）页面模板
+    clientManifest, // （可选）客户端构建 manifest
 })
 
 server.use('/dist', express.static(resolve('./dist')))
 server.get('*', (req, res) => {
-    const context = {
+    const context = { // 服务器渲染上下文
         title: 'hello',
         url: req.url,
     }
