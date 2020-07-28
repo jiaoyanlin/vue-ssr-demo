@@ -28,7 +28,7 @@ let config = {
             {
                 test: /\.js$/,
                 use: 'babel-loader',
-                exclude: /node_modules/,
+                exclude: /node_modules\/(?!(dom7|ssr-window|swiper)\/).*/,
             },
             {
                 test: /\.(jpg|jpeg|png|gif|svg)$/,
