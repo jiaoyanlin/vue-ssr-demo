@@ -70,7 +70,13 @@ module.exports = (type = 'server') => {
                     publicPath: '../' // 让css能成功加载到图片
                 }
             } : 'vue-style-loader',
-            'css-loader', 'postcss-loader', 'sass-loader'
+            {
+                loader: 'css-loader',
+                options: {
+                    // true -> 只导出className，不生成css文件；服务端渲染不要生成css，否则会和客户端的css重复
+                    onlyLocals: !isClient,
+                },
+            }, 'postcss-loader', 'sass-loader'
         ]
     })
     if (extractCss) config.plugins.push(new MiniCssExtractPlugin({filename: 'css/[name].[contenthash:8].css'}))
