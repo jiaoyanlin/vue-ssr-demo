@@ -36,6 +36,7 @@ let originConfig = {
                 use: {
                     loader: 'url-loader',
                     options: {
+                        esModule: false,
                         limit: 10000, // 10Kb
                         name: 'imgs/[name].[ext]?[hash]'
                     }

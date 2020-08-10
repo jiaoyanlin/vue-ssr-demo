@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
-    "start": "cross-env NODE_ENV=production node server.js",
+    "start": "cross-env NODE_ENV=production MICRO_CACHE=true node server.js",
     "build": "rimraf dist && npm run build:client && npm run build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config build/client.config.js --progress --hide-modules",
     "build:server": "cross-env NODE_ENV=production webpack --config build/server.config.js --progress --hide-modules"
@@ -25,6 +25,7 @@
     "cross-env": "^7.0.2",
     "express": "^4.17.1",
     "lodash.clonedeep": "^4.5.0",
+    "route-cache": "^0.4.5",
     "swiper": "^5.4.5",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",
