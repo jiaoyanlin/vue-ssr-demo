@@ -8,6 +8,7 @@
         <router-link to="/banner">banner</router-link>
         <router-link to="/item/1000">item 1000</router-link>
         <router-link to="/item/9999">item 9999</router-link>
+        <img class="img" src="./assets/images/head.jpg" alt="">
         <router-view></router-view>
     </div>
 </template>
@@ -30,5 +31,9 @@ export default {
 #app {
     background: #eee;
     color: green;
+}
+.img {
+    width: 100px;
+    display: block;
 }
 </style>

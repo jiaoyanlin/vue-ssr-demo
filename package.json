@@ -4,7 +4,8 @@
   "description": "vue ssr从头搭建项目",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production npm run build && node server.js",
+    "dev": "node server.js",
+    "start": "cross-env NODE_ENV=production MICRO_CACHE=true node server.js",
     "build": "rimraf dist && npm run build:client && npm run build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config build/client.config.js --progress --hide-modules",
     "build:server": "cross-env NODE_ENV=production webpack --config build/server.config.js --progress --hide-modules"
@@ -23,6 +24,8 @@
   "dependencies": {
     "cross-env": "^7.0.2",
     "express": "^4.17.1",
+    "lodash.clonedeep": "^4.5.0",
+    "route-cache": "^0.4.5",
     "swiper": "^5.4.5",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",
@@ -37,6 +40,7 @@
     "@babel/preset-env": "^7.10.2",
     "autoprefixer": "^9.8.0",
     "babel-loader": "^8.1.0",
+    "chokidar": "^1.7.0",
     "css-loader": "^3.6.0",
     "file-loader": "^6.0.0",
     "mini-css-extract-plugin": "^0.9.0",
@@ -52,6 +56,8 @@
     "vue-template-compiler": "^2.6.11",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^4.2.2",
     "webpack-node-externals": "^1.7.2"
   }

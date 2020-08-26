@@ -1,11 +1,12 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 生产环境抽离css
+const clone = require('lodash.clonedeep');
 
 const isProd = process.env.NODE_ENV === 'production'
-console.log('====isProd', isProd)
+// console.log('====isProd', isProd)
 
-let config = {
+let originConfig = {
     devtool: isProd ? false : '#cheap-module-source-map',
     mode: isProd ? 'production' : 'development',
 
@@ -35,6 +36,7 @@ let config = {
                 use: {
                     loader: 'url-loader',
                     options: {
+                        esModule: false,
                         limit: 10000, // 10Kb
                         name: 'imgs/[name].[ext]?[hash]'
                     }
@@ -56,6 +58,7 @@ let config = {
 module.exports = (type = 'server') => {
     const isClient = type === 'client';
     const extractCss = isProd && isClient; // 增加css抽取
+    const config = clone(originConfig);
     config.module.rules.push({
         test: /\.(css|scss)$/,
         include: [
