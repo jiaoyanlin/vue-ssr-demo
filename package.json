@@ -26,7 +26,7 @@
     "express": "^4.17.1",
     "lodash.clonedeep": "^4.5.0",
     "route-cache": "^0.4.5",
-    "swiper": "^5.4.5",
+    "swiper": "^6.5.1",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^4.1.1",
     "vue-router": "^3.0.6",
