@@ -23,7 +23,7 @@
   "homepage": "https://github.com/jiaoyanlin/vue-ssr-demo#readme",
   "dependencies": {
     "cross-env": "^7.0.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "lodash.clonedeep": "^4.5.0",
     "route-cache": "^0.4.5",
     "swiper": "^5.4.5",
